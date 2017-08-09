@@ -1,0 +1,36 @@
+#Load Data For Graphing
+
+theURL <- "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/Ecdat/Housing.csv";
+
+#Sales Prices of Houses in the City of Windsor
+
+windsorhomesDB <- read.csv(theURL, header = TRUE,  sep = ",", stringsAsFactors = TRUE);
+
+#Removing excess Column
+
+windsorhomesDB$X <- NULL
+
+#Loading ggplot2
+
+library(ggplot2);
+
+#Histogram
+
+ggplot(windsorhomesDB) + geom_histogram(aes(x=bedrooms));
+
+#Boxplot
+
+ggplot(windsorhomesDB, aes(y=price, x=1)) + geom_boxplot();
+
+#Scatterplot
+
+ggplot(windsorhomesDB, aes(x=lotsize, y=price)) + geom_point();
+
+
+#Insights
+
+#1. Over 50% of the homes that sold in Windsor are 3 bedroom homes.
+#2. The median home price in Windsor is roughly $60,000.
+#3. Buyers have a wide variety of lot sizes available to them at their particular price point.
+
+
